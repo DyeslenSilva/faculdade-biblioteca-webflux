@@ -3,6 +3,7 @@ package es.faculdade.biblioteca.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -31,17 +32,17 @@ public class EmprestimoController {
 	}
 	
 	@GetMapping("/emprestimo/{idEmprestimo}")
-	public Mono<Emprestimo>emprestimoPorID(@RequestAttribute Integer idEmprestimo){
+	public Mono<Emprestimo>emprestimoPorID(@PathVariable Integer idEmprestimo){
 		return emprestimoRepo.findById(idEmprestimo);
 	}
 	
 	@PutMapping("/emprestimo/{idEmprestimo}")
-	public Mono<Void> atualizarEmprestimo(@RequestAttribute Integer idEmprestimo){
+	public Mono<Void> atualizarEmprestimo(@PathVariable Integer idEmprestimo){
 		return emprestimoRepo.updateEmprestimo(idEmprestimo);
 	}
 	
 	@DeleteMapping("emprestimo/{idEmprestimo}")
-	public Mono<Void> deleteEmprestimo(@RequestAttribute Integer idEmprestimo){
+	public Mono<Void> deleteEmprestimo(@PathVariable Integer idEmprestimo){
 		return emprestimoRepo.deleteById(idEmprestimo);
 	}
 
