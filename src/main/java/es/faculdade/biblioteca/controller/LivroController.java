@@ -33,6 +33,17 @@ public class LivroController {
 		return livroRepo.findById(idLivro);
 	}
 	
+	
+	@GetMapping("/livro/{nome}")
+	public Mono<Livro> encontrarLivroNome(@PathVariable String nome){
+		return livroRepo.encontrarLivroPorNome(nome);
+	}
+	
+	@GetMapping("/livro/{genero}")
+	public Mono<Livro> encontrarLivroPorGenero(@PathVariable String genero){
+		return livroRepo.encontrarLivroPorGenero(genero);
+	}
+	
 	@PutMapping("/livro/{idLivro}")
 	public Mono<Void> atualizarLivro(@PathVariable Integer idLivro){
 		return livroRepo.updateLivro(idLivro);
